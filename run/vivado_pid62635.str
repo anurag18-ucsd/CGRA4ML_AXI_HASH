@@ -1,0 +1,265 @@
+/*
+
+Xilinx Vivado v2022.2 (64-bit) [Major: 2022, Minor: 2]
+SW Build: 3671981 on Fri Oct 14 04:59:54 MDT 2022
+IP Build: 3669848 on Fri Oct 14 08:30:02 MDT 2022
+
+Process ID (PID): 62635
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Tue Dec 10 19:36:58 PST 2024
+Time zone: 	Pacific Standard Time (America/Los_Angeles)
+
+OS: Ubuntu
+OS Version: 5.15.0-125-generic
+OS Architecture: amd64
+Available processors (cores): 128
+
+Display: 10.0
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	/tools/Xilinx/Vivado/2022.2/tps/lnx64/jre11.0.11_9
+Java executable: 	/tools/Xilinx/Vivado/2022.2/tps/lnx64/jre11.0.11_9/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m, -Xrs]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	s.dohadwalla.125
+User home directory: /home/s.dohadwalla.125
+User working directory: /home/s.dohadwalla.125/Desktop
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /tools/Xilinx/Vivado
+HDI_APPROOT: /tools/Xilinx/Vivado/2022.2
+RDI_DATADIR: /tools/Xilinx/Vivado/2022.2/data
+RDI_BINDIR: /tools/Xilinx/Vivado/2022.2/bin
+
+Vivado preferences file: /home/s.dohadwalla.125/.Xilinx/Vivado/2022.2/vivado.xml
+Vivado preferences directory: /home/s.dohadwalla.125/.Xilinx/Vivado/2022.2/
+Vivado layouts directory: /home/s.dohadwalla.125/.Xilinx/Vivado/2022.2/data/layouts
+PlanAhead jar file: 	/tools/Xilinx/Vivado/2022.2/lib/classes/planAhead.jar
+Vivado log file: 	/home/s.dohadwalla.125/Desktop/vivado.log
+Vivado journal file: 	/home/s.dohadwalla.125/Desktop/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-62635-waiter
+
+Xilinx Environment Variables
+----------------------------
+RDI_APPROOT: /tools/Xilinx/Vivado/2022.2
+RDI_BASEROOT: /tools/Xilinx/Vivado
+RDI_BINROOT: /tools/Xilinx/Vivado/2022.2/bin
+RDI_BUILD: yes
+RDI_DATADIR: /tools/Xilinx/Vivado/2022.2/data
+RDI_INSTALLROOT: /tools/Xilinx
+RDI_INSTALLVER: 2022.2
+RDI_JAVA_PLATFORM: 
+RDI_JAVA_VERSION: 11.0.11_9
+RDI_LIBDIR: /tools/Xilinx/Vivado/2022.2/lib/lnx64.o/Ubuntu:/tools/Xilinx/Vivado/2022.2/lib/lnx64.o
+RDI_OPT_EXT: .o
+RDI_PATCHROOT: 
+RDI_PLATFORM: lnx64
+RDI_PREPEND_PATH: /tools/Xilinx/Vivado/2022.2/ids_lite/ISE/bin/lin64
+RDI_PROG: /tools/Xilinx/Vivado/2022.2/bin/unwrapped/lnx64.o/vivado
+RDI_TPS_ROOT: /tools/Xilinx/Vivado/2022.2/tps/lnx64
+RDI_USE_JDK11: True
+XILINX: /tools/Xilinx/Vivado/2022.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@cselm2.ucsd.edu
+XILINX_DSP: /tools/Xilinx/Vivado/2022.2/ids_lite/ISE
+XILINX_HLS: /tools/Xilinx/Vitis_HLS/2022.2
+XILINX_PLANAHEAD: /tools/Xilinx/Vivado/2022.2
+XILINX_VITIS: 
+XILINX_VIVADO: /tools/Xilinx/Vivado/2022.2
+XILINX_VIVADO_HLS: /tools/Xilinx/Vivado/2022.2
+
+
+GUI allocated memory:	316 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,309 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,250 MB. GUI used memory: 58 MB. Current time: 12/10/24, 7:36:59 PM PST
+selectButton(PAResourceEtoH.GettingStartedView_CREATE_NEW_PROJECT, "Create Project"); // u
+// Run Command: PAResourceCommand.PACommandNames_NEW_PROJECT
+selectButton("NEXT", "Next >"); // JButton
+selectButton("NEXT", "Next >"); // JButton
+selectButton("BACK", "< Back"); // JButton
+selectButton("NEXT", "Next >"); // JButton
+// [GUI Memory]: 101 MB (+102910kb) [00:00:34]
+// [Engine Memory]: 1,258 MB (+1167223kb) [00:00:34]
+// [GUI Memory]: 109 MB (+3093kb) [00:00:34]
+selectButton("NEXT", "Next >"); // JButton
+// Elapsed time: 17 seconds
+selectComboBox(PAResourceEtoH.FPGAChooser_FAMILY, "Zynq UltraScale+ MPSoCs", 17); // l.a
+selectTab(PAResourceOtoP.PartChooser_TABBED_PANE, (HResource) null, "Boards", 1); // g
+// HMemoryUtils.trashcanNow. Engine heap size: 1,304 MB. GUI used memory: 59 MB. Current time: 12/10/24, 7:37:54 PM PST
+selectComboBox(PAResourceAtoD.BoardChooser_VENDOR, "xilinx.com", 2); // a.a
+// Elapsed time: 35 seconds
+selectComboBox(PAResourceAtoD.BoardChooser_NAME, "Zynq UltraScale+ ZCU104 Evaluation Board", 39); // a.a
+selectTreeTableHeader(PAResourceAtoD.BoardChooser_BOARD_TABLE, "Status", 2); // I
+selectTreeTable(PAResourceAtoD.BoardChooser_BOARD_TABLE, "Zynq UltraScale+ ZCU104 Evaluation Board ; Zynq UltraScale+ ZCU104 Evaluation Board ; Zynq UltraScale+ ZCU104 Evaluation Board ; xilinx.com ; 1.1 ; xczu7ev-ffvc1156-2-e ; 1156 ; RevC ; 360 ; 230400 ; 460800 ; 312 ; 96 ; 1728 ;  ; 11308 ;  ; 0 ; 0 ; 20 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 20 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 2 ; 8 ;  ; 0 ;  ;  ; 0 ;  ;  ; 0 ; 100 ; 100 ; E ; 0.825 ; 0.850 ; 0.876", 0, "Zynq UltraScale+ ZCU104 Evaluation Board", 0, false); // I
+openHTML ("www.xilinx.com/zcu104"); // I
+// Elapsed time: 27 seconds
+selectButton("NEXT", "Next >"); // JButton
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: create_project project_1 /home/s.dohadwalla.125/Desktop/project_1 -part xczu7ev-ffvc1156-2-e 
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 1,335 MB (+14672kb) [00:02:25]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.2/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: BOARD_MODIFIED
+// Tcl Message: set_property board_part xilinx.com:zcu104:part0:1.1 [current_project] 
+// Elapsed time: 10 seconds
+selectButton("FINISH", "Finish"); // JButton
+// 'g' command handler elapsed time: 133 seconds
+dismissDialog("Create Project"); // bq
+dismissDialog("New Project"); // f
+// Elapsed time: 14 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Add Sources]", 2, false); // f
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+selectButton("NEXT", "Next >"); // JButton
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a
+// HMemoryUtils.trashcanNow. Engine heap size: 1,397 MB. GUI used memory: 73 MB. Current time: 12/10/24, 7:39:39 PM PST
+// Elapsed time: 24 seconds
+String[] filenames31467 = {"/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/cipher_engine.v", "/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/shift_reg.v", "/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v"};
+setFileChooser(filenames31467);
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a
+dismissFileChooser();
+selectButton("FINISH", "Finish"); // JButton
+// 'f' command handler elapsed time: 46 seconds
+dismissDialog("Add Sources"); // c
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse {/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/cipher_engine.v /home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v /home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/shift_reg.v} 
+// [GUI Memory]: 134 MB (+20596kb) [00:03:28]
+// [Engine Memory]: 1,415 MB (+14597kb) [00:03:30]
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Tcl Message: update_compile_order -fileset sources_1 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,433 MB. GUI used memory: 66 MB. Current time: 12/10/24, 7:40:29 PM PST
+// Elapsed time: 635 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1, true); // D - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false, false, false, false, false, true); // D - Double Click
+// HMemoryUtils.trashcanNow. Engine heap size: 1,462 MB. GUI used memory: 69 MB. Current time: 12/10/24, 7:51:09 PM PST
+// Elapsed time: 11 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false, false, false, false, true, false); // D - Popup Trigger
+selectCodeEditor("trivium_top.v", 293, 343); // ac
+// Elapsed time: 29 seconds
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false, false, false, false, true, false); // D - Popup Trigger
+selectCodeEditor("trivium_top.v", 119, 292); // ac
+// Elapsed time: 25 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 3, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 3, true, false, false, false, true, false); // D - Popup Trigger - Node
+// Elapsed time: 13 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: launch_runs synth_1 -jobs 64 
+// Tcl Message: [Tue Dec 10 19:52:50 2024] Launched synth_1... Run output will be captured here: /home/s.dohadwalla.125/Desktop/project_1/project_1.runs/synth_1/runme.log 
+// 'i' command handler elapsed time: 3 seconds
+dismissDialog("Starting Design Runs"); // bq
+// TclEventType: RUN_STATUS_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,478 MB. GUI used memory: 70 MB. Current time: 12/10/24, 7:52:54 PM PST
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+selectButton("OptionPane.button", "Cancel"); // JButton
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+selectButton("OptionPane.button", "Cancel"); // JButton
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // S.a
+// Elapsed time: 43 seconds
+selectCodeEditor("trivium_top.v", 145, 157); // ac
+// Elapsed time: 98 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 3); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v), genblk1.cphr : cipher_engine (cipher_engine.v)]", 4); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 3); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 3); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 3); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 5); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources]", 0); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 2); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v), genblk1.cphr : cipher_engine (cipher_engine.v)]", 3, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v), genblk1.cphr : cipher_engine (cipher_engine.v)]", 3, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v), genblk1.cphr : cipher_engine (cipher_engine.v)]", 3, true, false, false, false, false, true); // D - Double Click - Node
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// [Engine Memory]: 1,499 MB (+13202kb) [00:19:44]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,499 MB. GUI used memory: 71 MB. Current time: 12/10/24, 7:56:39 PM PST
+// Elapsed time: 35 seconds
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // E
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: launch_runs synth_1 -jobs 64 
+// Tcl Message: [Tue Dec 10 19:56:46 2024] Launched synth_1... Run output will be captured here: /home/s.dohadwalla.125/Desktop/project_1/project_1.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bq
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// HMemoryUtils.trashcanNow. Engine heap size: 1,501 MB. GUI used memory: 71 MB. Current time: 12/10/24, 8:26:39 PM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,501 MB. GUI used memory: 59 MB. Current time: 12/10/24, 8:56:40 PM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,501 MB. GUI used memory: 59 MB. Current time: 12/10/24, 9:26:40 PM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,501 MB. GUI used memory: 59 MB. Current time: 12/10/24, 9:56:40 PM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,501 MB. GUI used memory: 59 MB. Current time: 12/10/24, 10:26:40 PM PST

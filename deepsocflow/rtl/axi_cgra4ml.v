@@ -166,7 +166,9 @@ wire [AXIL_ADDR_WIDTH-1:0] reg_rd_addr;
 wire reg_rd_en;
 wire [AXIL_WIDTH-1:0] reg_rd_data;
 wire reg_rd_ack;
-
+wire [255:0] hash;
+wire [31:0] hash_count;
+wire bundle_done;
 // Controller with Alex DMAs: desc signals (including od tag) and status signals
 wire [AXI_ADDR_WIDTH+AXI_LEN_WIDTH-1:0] m_od_axis_write_desc_tdata;
 wire m_od_axis_write_desc_tvalid;
@@ -202,6 +204,9 @@ wire [AXI_WIDTH  -1:0]  s_axis_weights_tdata;
 wire [AXI_WIDTH/8-1:0]  s_axis_weights_tkeep;
 wire [AXIS_USER_WIDTH-1:0] s_axis_weights_tuser;
 
+wire hash_verified;
+wire hash_error;
+
     // AND, controller monitors the axis output status
 wire m_axis_output_tready; 
 wire m_axis_output_tvalid;
@@ -209,7 +214,7 @@ wire m_axis_output_tlast;
 wire [AXI_WIDTH   -1:0] m_axis_output_tdata;
 wire [AXI_WIDTH/8 -1:0] m_axis_output_tkeep;
 wire [W_BPT-1:0] m_bytes_per_transfer;
-
+wire [31:0] bundle;
 wire [AXIL_ADDR_WIDTH-1:0] reg_wr_addr_ctrl = (reg_wr_addr-AXIL_BASE_ADDR) >> 2;
 wire [AXIL_ADDR_WIDTH-1:0] reg_rd_addr_ctrl = (reg_rd_addr-AXIL_BASE_ADDR) >> 2;
 
@@ -297,6 +302,10 @@ dma_controller #(
     .m_wd_user(m_wd_axis_write_desc_tuser),
     .m_wd_len((m_wd_axis_write_desc_tdata[AXI_ADDR_WIDTH+AXI_LEN_WIDTH-1:AXI_ADDR_WIDTH])),
     .m_wd_valid(m_wd_axis_write_desc_tvalid),
+    .hash(hash),
+    .count(hash_count),
+    .bundle(bundle),
+    .bundle_done(bundle_done),
     .m_wd_ready(m_wd_axis_write_desc_tready)
 );
 
@@ -521,5 +530,19 @@ alex_axi_dma_wr #(
     .enable(1'b1),
     .abort(1'b0)
 );
+// hash_comp hash_comp_weights_inst (
+//     .clk(clk),
+//     .rstn(rstn),
+//     .data_in(m_axi_weights_rdata),
+//     .m_axi_weights_rvalid(m_axi_weights_rvalid),
+//     .m_axi_weights_rready(m_axi_weights_rready),
+//     //.m_axi_weights_rdata(m_axi_weights_rdata),  //not used as we're getting the hash data from the axis_slave
+//     //.m_axi_weights_rid(m_axi_weights_rid), //not 
+//     .hash_error(hash_error),
+//     .hash_verified(hash_verified)
+//     //.hash_in(hash),
+//     //.hash_count_in(hash_count),
+//     //.bundle_done(bundle_done),
 
+// );
 endmodule

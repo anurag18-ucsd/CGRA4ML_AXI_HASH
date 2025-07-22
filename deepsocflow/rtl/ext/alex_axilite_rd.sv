@@ -79,7 +79,6 @@ assign s_axil_arready = !s_axil_arvalid_reg;
 assign s_axil_rdata = s_axil_rdata_reg;
 assign s_axil_rresp = 2'b00;
 assign s_axil_rvalid = s_axil_rvalid_reg;
-
 assign reg_rd_addr = s_axil_araddr_reg;
 assign reg_rd_en = reg_rd_en_reg;
 
@@ -119,7 +118,6 @@ always @(posedge clk `OR_NEGEDGE(rstn)) begin
         s_axil_rdata_reg <= {DATA_WIDTH{1'b0}};
         s_axil_rvalid_reg <= 1'b0;
         reg_rd_en_reg <= 1'b0;
-
 
         s_axil_arvalid_reg <= 1'b0;
         s_axil_rvalid_reg <= 1'b0;

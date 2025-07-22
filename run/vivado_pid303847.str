@@ -1,0 +1,302 @@
+/*
+
+Xilinx Vivado v2022.2 (64-bit) [Major: 2022, Minor: 2]
+SW Build: 3671981 on Fri Oct 14 04:59:54 MDT 2022
+IP Build: 3669848 on Fri Oct 14 08:30:02 MDT 2022
+
+Process ID (PID): 303847
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Wed Dec 11 06:14:05 PST 2024
+Time zone: 	Pacific Standard Time (America/Los_Angeles)
+
+OS: Ubuntu
+OS Version: 5.15.0-125-generic
+OS Architecture: amd64
+Available processors (cores): 128
+
+Display: 10.0
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	/tools/Xilinx/Vivado/2022.2/tps/lnx64/jre11.0.11_9
+Java executable: 	/tools/Xilinx/Vivado/2022.2/tps/lnx64/jre11.0.11_9/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m, -Xrs]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	s.dohadwalla.125
+User home directory: /home/s.dohadwalla.125
+User working directory: /home/s.dohadwalla.125/Desktop
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /tools/Xilinx/Vivado
+HDI_APPROOT: /tools/Xilinx/Vivado/2022.2
+RDI_DATADIR: /tools/Xilinx/Vivado/2022.2/data
+RDI_BINDIR: /tools/Xilinx/Vivado/2022.2/bin
+
+Vivado preferences file: /home/s.dohadwalla.125/.Xilinx/Vivado/2022.2/vivado.xml
+Vivado preferences directory: /home/s.dohadwalla.125/.Xilinx/Vivado/2022.2/
+Vivado layouts directory: /home/s.dohadwalla.125/.Xilinx/Vivado/2022.2/data/layouts
+PlanAhead jar file: 	/tools/Xilinx/Vivado/2022.2/lib/classes/planAhead.jar
+Vivado log file: 	/home/s.dohadwalla.125/Desktop/vivado.log
+Vivado journal file: 	/home/s.dohadwalla.125/Desktop/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-303847-waiter
+
+Xilinx Environment Variables
+----------------------------
+RDI_APPROOT: /tools/Xilinx/Vivado/2022.2
+RDI_BASEROOT: /tools/Xilinx/Vivado
+RDI_BINROOT: /tools/Xilinx/Vivado/2022.2/bin
+RDI_BUILD: yes
+RDI_DATADIR: /tools/Xilinx/Vivado/2022.2/data
+RDI_INSTALLROOT: /tools/Xilinx
+RDI_INSTALLVER: 2022.2
+RDI_JAVA_PLATFORM: 
+RDI_JAVA_VERSION: 11.0.11_9
+RDI_LIBDIR: /tools/Xilinx/Vivado/2022.2/lib/lnx64.o/Ubuntu:/tools/Xilinx/Vivado/2022.2/lib/lnx64.o
+RDI_OPT_EXT: .o
+RDI_PATCHROOT: 
+RDI_PLATFORM: lnx64
+RDI_PREPEND_PATH: /tools/Xilinx/Vivado/2022.2/ids_lite/ISE/bin/lin64
+RDI_PROG: /tools/Xilinx/Vivado/2022.2/bin/unwrapped/lnx64.o/vivado
+RDI_TPS_ROOT: /tools/Xilinx/Vivado/2022.2/tps/lnx64
+RDI_USE_JDK11: True
+XILINX: /tools/Xilinx/Vivado/2022.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@cselm2.ucsd.edu
+XILINX_DSP: /tools/Xilinx/Vivado/2022.2/ids_lite/ISE
+XILINX_HLS: /tools/Xilinx/Vitis_HLS/2022.2
+XILINX_PLANAHEAD: /tools/Xilinx/Vivado/2022.2
+XILINX_VITIS: 
+XILINX_VIVADO: /tools/Xilinx/Vivado/2022.2
+XILINX_VIVADO_HLS: /tools/Xilinx/Vivado/2022.2
+
+
+GUI allocated memory:	420 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,435 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+selectList(PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS, "/home/s.dohadwalla.125/Desktop/project_1/project_1.xpr", 0); // b.a
+// Opening Vivado Project: /home/s.dohadwalla.125/Desktop/project_1/project_1.xpr. Version: Vivado v2022.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 1,308 MB. GUI used memory: 58 MB. Current time: 12/11/24, 6:14:06 AM PST
+// Tcl Message: open_project /home/s.dohadwalla.125/Desktop/project_1/project_1.xpr 
+// Tcl Message: INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/home/s.dohadwalla.125/Desktop/project_1/project_1.gen/sources_1'. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 96 MB (+98573kb) [00:00:08]
+// [Engine Memory]: 1,317 MB (+1228978kb) [00:00:08]
+// [Engine Memory]: 1,383 MB (+1107kb) [00:00:08]
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.2/data/ip'. 
+// Project name: project_1; location: /home/s.dohadwalla.125/Desktop/project_1; part: xczu7ev-ffvc1156-2-e
+dismissDialog("Open Project"); // bq
+// [GUI Memory]: 103 MB (+2084kb) [00:00:11]
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 74 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 2, true); // D - Node
+// Elapsed time: 23 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 2); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 2); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 2); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, trivium_top (trivium_top.v)]", 2); // D
+// [GUI Memory]: 111 MB (+2718kb) [00:01:51]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// [GUI Memory]: 124 MB (+7656kb) [00:01:59]
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: launch_runs synth_1 -jobs 64 
+// Tcl Message: [Wed Dec 11 06:15:58 2024] Launched synth_1... Run output will be captured here: /home/s.dohadwalla.125/Desktop/project_1/project_1.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bq
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 13 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1, true); // D - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // D
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // S.a
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sim_1, [HDL 9-1206] Syntax error near '+' [/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v:63]. ]", 4, false); // u.d
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sources_1, [HDL 9-1206] Syntax error near '+' [/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v:63]. ]", 2, false); // u.d
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-2716] syntax error near '+' [/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v:63]. ]", 6, false); // u.d
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-2716] syntax error near '+' [/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v:63]. ]", 6, false, false, false, false, false, true); // u.d - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Common 17-69] Command failed: Vivado Synthesis failed. ]", 7, false); // u.d
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Common 17-69] Command failed: Vivado Synthesis failed. ]", 7, false, false, false, false, false, true); // u.d - Double Click
+selectCheckBox(PAResourceItoN.MsgView_ERROR_MESSAGES, (String) null, true); // f: TRUE
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Common 17-69] Command failed: Vivado Synthesis failed. ]", 7, false); // u.d
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Common 17-69] Command failed: Vivado Synthesis failed. ]", 7, false); // u.d
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Common 17-69] Command failed: Vivado Synthesis failed. ]", 7, false, false, false, false, false, true); // u.d - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis]", 5, true); // u.d - Node
+selectTab((HResource) null, (HResource) null, "Log", 2); // aa
+// Elapsed time: 54 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, trivium_top.v]", 2, false, false, false, false, false, true); // D - Double Click
+// Elapsed time: 51 seconds
+selectCodeEditor("trivium_top.v", 186, 103); // ac
+// Elapsed time: 29 seconds
+selectCodeEditor("trivium_top.v", 180, 189); // ac
+selectCodeEditor("trivium_top.v", 166, 192); // ac
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("trivium_top.v", 136, 170); // ac
+// Elapsed time: 15 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: launch_runs synth_1 -jobs 64 
+// Tcl Message: [Wed Dec 11 06:19:39 2024] Launched synth_1... Run output will be captured here: /home/s.dohadwalla.125/Desktop/project_1/project_1.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bq
+// TclEventType: RUN_STATUS_CHANGE
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // E
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 34 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_REPORTS_WINDOW, "View Reports"); // a
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_REPORTS_WINDOW
+// [Engine Memory]: 1,454 MB (+1908kb) [00:06:21]
+dismissDialog("Synthesis Completed"); // S.a
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Wed Dec 11 06:20:02 PST 2024 ; 8182", 2, "report_utilization", 1, false); // J
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Implementation ;  ;  ;  ; ", 4, "Implementation", 0, true); // J - Node
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Write Bitstream (write_bitstream) ;  ;  ;  ; ", 37, "Write Bitstream (write_bitstream)", 0, true); // J - Node
+// Elapsed time: 360 seconds
+selectTab((HResource) null, (HResource) null, "Log", 2); // aa
+// Elapsed time: 18 seconds
+selectTab((HResource) null, (HResource) null, "Reports", 3); // aa
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Wed Dec 11 06:20:02 PST 2024 ; 8182", 2, "report_utilization", 1, false); // J
+expandTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Wed Dec 11 06:20:02 PST 2024 ; 8182", 2); // J
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Wed Dec 11 06:20:02 PST 2024 ; 8182", 2, "report_utilization", 1, false, false, false, false, false, true); // J - Double Click
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Wed Dec 11 06:20:02 PST 2024 ; 8182", 2, "report_utilization", 1, false); // J
+// Elapsed time: 39 seconds
+selectCodeEditor("Utilization - Synth Design - synth_1", 288, 212); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 161, 276); // F
+// Elapsed time: 17 seconds
+selectCodeEditor("Utilization - Synth Design - synth_1", 180, 367); // F
+// Elapsed time: 22 seconds
+selectCodeEditor("Utilization - Synth Design - synth_1", 264, 268); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 264, 268); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 73, 276); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 53, 221); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 50, 287); // F
+// Elapsed time: 672 seconds
+selectCodeEditor("Utilization - Synth Design - synth_1", 415, 363); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 404, 350); // F
+selectCodeEditor("Utilization - Synth Design - synth_1", 340, 190); // F
+// HMemoryUtils.trashcanNow. Engine heap size: 1,479 MB. GUI used memory: 69 MB. Current time: 12/11/24, 6:44:06 AM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,479 MB. GUI used memory: 58 MB. Current time: 12/11/24, 7:14:06 AM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,479 MB. GUI used memory: 57 MB. Current time: 12/11/24, 7:44:06 AM PST
+// Elapsed time: 4615 seconds
+closeMainWindow("project_1 - [/home/s.dohadwalla.125/Desktop/project_1/project_1.xpr] - Vivado 2022.2"); // aK
+// Run Command: PAResourceCommand.PACommandNames_EXIT
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+dismissDialog("Exit Vivado"); // u
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_OPEN_PROJECT, "Open..."); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+// Run Command: PAResourceCommand.PACommandNames_OPEN_PROJECT
+// Elapsed time: 24 seconds
+setFileChooser("/home/s.dohadwalla.125/Desktop/cgra4ml/project_1/project_1.xpr");
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,468 MB. GUI used memory: 57 MB. Current time: 12/11/24, 7:57:33 AM PST
+// Opening Vivado Project: /home/s.dohadwalla.125/Desktop/cgra4ml/project_1/project_1.xpr. Version: Vivado v2022.2 
+selectButton("OptionPane.button", "Yes"); // JButton
+// Tcl Message: close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project /home/s.dohadwalla.125/Desktop/cgra4ml/project_1/project_1.xpr 
+// Tcl Message: INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/home/s.dohadwalla.125/Desktop/cgra4ml/project_1/project_1.gen/sources_1'. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.2/data/ip'. 
+// Project name: project_1; location: /home/s.dohadwalla.125/Desktop/cgra4ml/project_1; part: xczu7ev-ffvc1156-2-e
+dismissDialog("Open Project"); // bq
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 15 seconds
+selectTab((HResource) null, (HResource) null, "Reports", 3); // aa
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Mon Nov 18 15:15:13 PST 2024 ; 8208", 2, "report_utilization", 1, false); // J
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Mon Nov 18 15:15:13 PST 2024 ; 8208", 2, "Utilization - Synth Design", 0, false); // J
+expandTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Mon Nov 18 15:15:13 PST 2024 ; 8208", 2); // J
+selectTreeTable(PAResourceEtoH.ExpReportTreePanel_EXP_REPORT_TREE_TABLE, "Utilization - Synth Design ; report_utilization ;  ; Mon Nov 18 15:15:13 PST 2024 ; 8208", 2, "Utilization - Synth Design", 0, false, false, false, false, false, true); // J - Double Click
+// HMemoryUtils.trashcanNow. Engine heap size: 1,528 MB. GUI used memory: 62 MB. Current time: 12/11/24, 8:27:36 AM PST
+// [Engine Memory]: 1,528 MB (+749kb) [02:14:56]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,528 MB. GUI used memory: 59 MB. Current time: 12/11/24, 8:57:36 AM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,528 MB. GUI used memory: 58 MB. Current time: 12/11/24, 9:27:37 AM PST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,528 MB. GUI used memory: 58 MB. Current time: 12/11/24, 9:57:37 AM PST

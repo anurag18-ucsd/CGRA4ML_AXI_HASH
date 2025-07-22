@@ -44,7 +44,7 @@ module cgra4ml_axi2ram_tb #(
     // Parameters for axilite to ram
                 DATA_WR_WIDTH           = 32,
                 DATA_RD_WIDTH           = 32,
-                AXIL_ADDR_WIDTH              = 40,
+                AXIL_ADDR_WIDTH         = 40,
                 STRB_WIDTH              = 4,
                 TIMEOUT                 = 2,
 
@@ -78,6 +78,7 @@ module cgra4ml_axi2ram_tb #(
     // Randomizer for AXI4 requests
                 VALID_PROB              = `VALID_PROB,
                 READY_PROB              = `READY_PROB,
+                hash_mem_size           = 10,
 
     localparam	LSB = $clog2(C_S_AXI_DATA_WIDTH)-3                
 )(
@@ -157,7 +158,7 @@ module cgra4ml_axi2ram_tb #(
     wire                       m_axi_weights_arvalid_zipcpu;
     wire                       m_axi_weights_arready;
     wire                       m_axi_weights_arready_zipcpu;
-    wire [AXI_ID_WIDTH-1:0]    m_axi_weights_rid;
+    wire [AXI_ID_WIDTH-1:0]    m_axi_weights_rid;   
     wire [AXI_DATA_WIDTH_PS-1:0]  m_axi_weights_rdata;
     wire [1:0]                 m_axi_weights_rresp;
     wire                       m_axi_weights_rlast;
@@ -210,7 +211,6 @@ module cgra4ml_axi2ram_tb #(
         rand_output_w   <= $urandom_range(0, 1000) < READY_PROB;
         rand_output_b   <= $urandom_range(0, 1000) < READY_PROB;
     end
-
     assign m_axi_pixel_arvalid_zipcpu   = rand_pixel_ar & m_axi_pixel_arvalid;
     assign m_axi_pixel_arready          = rand_pixel_ar & m_axi_pixel_arready_zipcpu;
     assign m_axi_pixel_rvalid           = rand_pixel_r  & m_axi_pixel_rvalid_zipcpu;
@@ -219,6 +219,7 @@ module cgra4ml_axi2ram_tb #(
     assign m_axi_weights_arvalid_zipcpu = rand_weights_ar & m_axi_weights_arvalid;
     assign m_axi_weights_arready        = rand_weights_ar & m_axi_weights_arready_zipcpu;
     assign m_axi_weights_rvalid         = rand_weights_r  & m_axi_weights_rvalid_zipcpu;
+    //assign m_axi_weights_rready_zipcpu  = rand_weights_r  & m_axi_weights_rready;
     assign m_axi_weights_rready_zipcpu  = rand_weights_r  & m_axi_weights_rready;
 
     assign m_axi_output_awvalid_zipcpu = rand_output_aw & m_axi_output_awvalid;
@@ -228,6 +229,88 @@ module cgra4ml_axi2ram_tb #(
     assign m_axi_output_bvalid         = rand_output_b  & m_axi_output_bvalid_zipcpu;
     assign m_axi_output_bready_zipcpu  = rand_output_b  & m_axi_output_bready;
 
+
+logic [6:0] hash_count;  //need to count 80 transactions of 32 bits each
+logic [6:0] counter; 
+
+logic data_loaded;
+logic [AXIL_WIDTH-1:0] hash_mem_axi [hash_mem_size*8-1:0];  //sending 32 bits at a time, so 8*32=256 bits
+
+//AXI lite slave interface for AXIL-2RAM hash data port 
+logic [AXIL_ADDR_WIDTH-1:0]s_axil_awaddr_1;
+logic [2:0]                s_axil_awprot_1;
+logic                      s_axil_awvalid_1;
+logic                      s_axil_awready_1;
+logic [AXIL_WIDTH-1:0]  s_axil_wdata_1;
+logic [STRB_WIDTH-1:0]     s_axil_wstrb_1;
+logic                      s_axil_wvalid_1;
+logic                      s_axil_wready_1;
+logic [1:0]                s_axil_bresp_1;
+logic                      s_axil_bvalid_1;
+logic                      s_axil_bready_1;
+logic [AXIL_ADDR_WIDTH-1:0] s_axil_araddr_1;
+logic [2:0]                s_axil_arprot_1;
+logic                      s_axil_arvalid_1;
+logic                      s_axil_arready_1;
+logic [AXIL_WIDTH-1:0]  s_axil_rdata_1;
+logic [1:0]                s_axil_rresp_1;
+logic                      s_axil_rvalid_1;
+logic                      s_axil_rready_1;
+
+logic [2:0] addr_counter;
+assign hash_count = hash_mem_size*8;
+
+always_ff @(posedge clk) begin
+    if (~rstn) begin
+        counter <= 0;
+        data_loaded <= 1'b0;
+        addr_counter <= 0;
+        s_axil_awaddr_1 <= 0;
+        s_axil_awprot_1 <= 3'b000; // no protection
+        s_axil_awvalid_1 <= 1'b0;
+        s_axil_wdata_1 <= 0;
+        s_axil_wstrb_1 <= 4'b1111; // write all bytes
+        s_axil_wvalid_1 <= 1'b0;
+        s_axil_bready_1 <= 1'b1; //always ready to accept write response
+    end
+    else begin
+        if (counter==hash_count)
+            data_loaded <= 1'b1;
+        else begin
+            //AXI write address channel
+            if (!s_axil_awvalid_1) begin
+                /* verilator lint_off WIDTHEXPAND */
+                s_axil_awaddr_1 <= 0 + addr_counter;
+                /* verilator lint_on WIDTHEXPAND */ // 8 chunks of 32 bits each, counter will reset after 7
+                s_axil_awvalid_1 <= 1'b1;
+
+            end
+            else begin
+                if (s_axil_awready_1) 
+                    s_axil_awvalid_1 <= 1'b0;
+                    addr_counter <= addr_counter + 1; //increment address counter
+
+            end
+
+            //AXI write data channel
+            if (!s_axil_wvalid_1) begin
+                s_axil_wdata_1 <= hash_mem_axi[counter];
+                s_axil_wvalid_1 <= 1'b1;
+            end
+            else begin
+                if (s_axil_wready_1) begin
+                    counter <= counter + 1;
+                    s_axil_wvalid_1 <= 1'b0;
+                end
+            end
+            //AXI write response channel
+            if (s_axil_bvalid_1) begin //bready is always high
+                counter <= counter + 1;   //transaction complete, increment counter
+            end
+
+        end
+    end 
+end
 
 zipcpu_axi2ram #(
     .C_S_AXI_ID_WIDTH(C_S_AXI_ID_WIDTH),
@@ -397,7 +480,7 @@ zipcpu_axi2ram #(
     .S_AXI_RREADY(1'b0)
 );
 
-axi_cgra4ml #(
+sec_wrapper #(
     .ROWS(ROWS),
     .COLS(COLS),
     .X_BITS(X_BITS),
@@ -417,7 +500,7 @@ axi_cgra4ml #(
     .AXIL_ADDR_WIDTH(AXIL_ADDR_WIDTH),
     .STRB_WIDTH(STRB_WIDTH),
     .W_BPT(W_BPT)
-) OC_TOP (
+) wrapper (   
     .*
 );
 

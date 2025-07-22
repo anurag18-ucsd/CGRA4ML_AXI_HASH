@@ -1,0 +1,76 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Wed Jul  9 20:04:41 2025
+[*]
+[dumpfile] "/home/a.deshpande.186/Desktop/CGRA4ML_AXI_Hash/cgra4ml/run/build/axi_tb_sys.vcd"
+[dumpfile_mtime] "Wed Jul  9 19:19:04 2025"
+[dumpfile_size] 94581388
+[savefile] "/home/a.deshpande.186/Desktop/CGRA4ML_AXI_Hash/cgra4ml/run/hash_data_check.gtkw"
+[timestart] 9464900
+[size] 1920 1029
+[pos] -1 -1
+*-13.961242 9513940 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.axi_sys_tb.
+[treeopen] TOP.axi_sys_tb.dut.
+[treeopen] TOP.axi_sys_tb.dut.wrapper.
+[treeopen] TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.
+[sst_width] 204
+[signals_width] 241
+[sst_expanded] 1
+[sst_vpaned_height] 307
+@28
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.clk
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.rstn
+@22
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.reg_wr_addr[39:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.reg_wr_data[31:0]
+@28
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.reg_wr_en
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.in_hash_counter[2:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_flag
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_full_flag
+@22
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_counter[3:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_addr[5:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[0][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[1][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[2][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[3][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[4][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[5][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[6][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_mem_axi[7][31:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.comp_hash[255:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.final_hash[255:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.hash_out[255:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.fifo_out_w[511:0]
+@23
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.m_axi_weights_rdata[63:0]
+@28
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.count[2:0]
+@22
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[0][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[1][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[2][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[3][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[4][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[5][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[6][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_arr[7][63:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block[511:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_d[511:0]
+@28
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.block_valid1
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.push_i
+@22
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.fifo_out[511:0]
+@28
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.pop_i
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.fifo_empty
+@22
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.fifo_inst.rd_ptr[9:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.fifo_inst.wr_ptr[9:0]
+TOP.axi_sys_tb.dut.wrapper.hash_comp_weights_inst.fifo_inst.data_in[511:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -34,7 +34,7 @@ module dma_controller #(
   input  logic o_valid,
   input  logic o_last,
   input  logic [AXI_LEN_WIDTH -1:0] o_bpt,  // Varies for each transfer
-
+  
   
   /*
   input  logic [1:0] o_axi_bresp,
@@ -65,6 +65,11 @@ module dma_controller #(
   (* mark_debug = "true" *) output logic [AXIS_USER_WIDTH-1:0] m_wd_user ,
   (* mark_debug = "true" *) output logic [AXI_LEN_WIDTH -1:0]  m_wd_len  ,
   (* mark_debug = "true" *) output logic                       m_wd_valid,
+                            output logic                       [255:0] hash,
+                            output logic                       [31:0] count,
+                            output logic                       [31:0] bundle,
+                            output logic                       bundle_done,
+                            //output logic                       [AXI_DATA_WIDTH-1:0] m_wd_data,
   (* mark_debug = "true" *) input  logic                       m_wd_ready
 );
   localparam // Addresses for local memory 0:15 is registers, rest is SRAM
@@ -77,9 +82,19 @@ module dma_controller #(
     A_N_BUNDLES_1  = 'h9,
     A_W_DONE       = 'hA, // W,X,O done are written by PL, read by PS to debug which one hangs
     A_X_DONE       = 'hB, 
-    A_O_DONE       = 'hC
+    A_O_DONE       = 'hC,
+    A_HASH0        = 'hD,
+    A_HASH1        = 'hE,
+    A_HASH2        = 'hF,
+    A_HASH3        = 'h10,
+    A_HASH4        = 'h11,
+    A_HASH5        = 'h12,
+    A_HASH6        = 'h13,
+    A_HASH7        = 'h14,
+    A_COUNT        = 'h15,
+    A_BUNDLE       = 'h16
     ; // Max 16 registers
-  (* mark_debug = "true" *) logic [12:0][AXI_DATA_WIDTH-1:0] cfg ;
+  (* mark_debug = "true" *) logic [32:0][AXI_DATA_WIDTH-1:0] cfg ;
 
   always_ff @(posedge clk)  // PS READ (1 clock latency)
     if (!rstn)          {reg_rd_data} <= '0;
@@ -90,7 +105,8 @@ module dma_controller #(
 
   assign reg_wr_ack = 1'b1;
   assign reg_rd_ack = 1'b1;
-
+  assign  hash = {cfg[20], cfg[19], cfg[18], cfg[17], cfg[16], cfg[15], cfg[14],cfg[13]};
+  assign  count = cfg[21];
   //------------------- BUNDLES SRAM  ---------------------------------------
 
   logic ram_rd_en, ram_wr_en;
@@ -118,8 +134,8 @@ module dma_controller #(
     .doB   (ram_rd_data)
   );
 
-  assign ram_wr_en   = reg_wr_en && (reg_wr_addr >= 16);
-  assign ram_wr_addr = SRAM_WR_ADDR_WIDTH'(reg_wr_addr - 16);
+  assign ram_wr_en   = reg_wr_en && (reg_wr_addr >= 32);
+  assign ram_wr_addr = SRAM_WR_ADDR_WIDTH'(reg_wr_addr - 32);
   assign ram_wr_data = reg_wr_data;
 
    // ram_ are combinational from ram
@@ -147,6 +163,7 @@ module dma_controller #(
   //------------------- WEIGHTS DMA CONTROLLER -----------------------------------
 
   logic en_wt, lc_wt, lc_wp, lc_wb, f_wp, set_n_bundles_w;
+  //logic bundle_done;
   logic [COUNTER_WIDTH-1:0] count_wb;
   enum  {W_IDLE, W_WAIT_RAM, W_EXEC} w_state, w_state_next;
 
@@ -177,7 +194,8 @@ module dma_controller #(
   assign m_wd_valid    = w_state == W_EXEC;
   assign en_wt         = m_wd_valid && m_wd_ready;
   assign m_wd_user     = {w_header, f_wp};
-
+  assign bundle_done  = cfg[A_BUNDLE_DONE][0];
+  assign bundle       = cfg[A_BUNDLE];
   always_ff @(posedge clk)
     if (!rstn)               {w_header, w_bpt_p0, w_bpt} <= 0;
     else if (w_ram_rd_valid) {w_header, w_bpt_p0, w_bpt} <= {ram_header, ram_w_bpt_p0, ram_w_bpt};
@@ -262,7 +280,15 @@ module dma_controller #(
       cfg[A_W_DONE      ] <= 32'd0;
       cfg[A_X_DONE      ] <= 32'd0;
       cfg[A_O_DONE      ] <= 32'd0;
-
+      cfg[A_HASH0       ] <= 32'd0;
+      cfg[A_HASH1       ] <= 32'd0;
+      cfg[A_HASH2       ] <= 32'd0;
+      cfg[A_HASH3       ] <= 32'd0;
+      cfg[A_HASH4       ] <= 32'd0;
+      cfg[A_HASH5       ] <= 32'd0;
+      cfg[A_HASH6       ] <= 32'd0;
+      cfg[A_HASH7       ] <= 32'd0;
+      cfg[A_BUNDLE       ] <= 32'd0;
       ocm_idx     <= 1; // before first transfer idx = 1, so first idx = 0
       m_od_addr   <= 0;
       m_od_valid  <= 0;
@@ -307,7 +333,7 @@ module dma_controller #(
         cfg[A_O_DONE] <= 1;
 
       //reg_wr_ack <= reg_wr_en; // Write has 1 clock latency
-      if (reg_wr_en && reg_wr_addr < 16) // PS has priority in writing to registers
+      if (reg_wr_en && reg_wr_addr < 32) // PS has priority in writing to registers
         cfg[reg_wr_addr] <= reg_wr_data;
     end
 endmodule

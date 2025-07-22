@@ -67,7 +67,16 @@ typedef struct {
 #define A_W_DONE       0xA // W,X,O done are written by PL, read by PS to debug which one hangs
 #define A_X_DONE       0xB 
 #define A_O_DONE       0xC
-
+#define A_HASH0         0xD
+#define A_HASH1         0xE
+#define A_HASH2         0xF
+#define A_HASH3         0x10
+#define A_HASH4         0x11
+#define A_HASH5         0x12
+#define A_HASH6         0x13
+#define A_HASH7         0x14
+#define A_COUNT         0x15
+#define A_BUNDLE        0x16  
 #ifdef __cplusplus
   #define EXT_C "C"
   #define restrict __restrict__ 
@@ -266,7 +275,8 @@ extern EXT_C u8 model_run(Memory_st *restrict mp, void *p_config) {
   set_config(p_config, A_START, 1); 
 
   for (ib = 0; ib < N_BUNDLES; ib++) {
-
+    debug_printf("Starting bundle %d\n", ib);//heree
+    //set_config(p_config, A_COUNT, ib);
     pb = &bundles[ib];
     p_out_buffer = (i8*)&(mp->out_buffers[pb->out_buffer_idx]);
 
@@ -526,6 +536,8 @@ PROCESS_AND_STORE_DONE:
 #endif
   flush_cache(p_out_buffer, pb->o_bytes);
   set_config(p_config, A_BUNDLE_DONE, 1);
+  set_config(p_config, A_BUNDLE, ib+1);
+  //set_config(p_config, A_DONE_READ + ocm_bank, 0);
   } // ib
   debug_printf("done all bundles!!\n");  
 #ifdef SIM
@@ -598,7 +610,16 @@ extern EXT_C void model_setup(Memory_st *restrict mp, void *p_config) {
   set_config(p_config, A_W_DONE      , 0);  // Weigths done
   set_config(p_config, A_X_DONE      , 0);  // Bundle done
   set_config(p_config, A_O_DONE      , 0);  // Output done
-
+  set_config(p_config, A_HASH0       , 4294967295);  // Hash0
+  set_config(p_config, A_HASH1       , 4294967295);  // Hash1
+  set_config(p_config, A_HASH2       , 4294967295);  // Hash2
+  set_config(p_config, A_HASH3       , 4294967295);  // Hash3
+  set_config(p_config, A_HASH4       , 4294967295);  // Hash4
+  set_config(p_config, A_HASH5       , 4294967295);  // Hash5
+  set_config(p_config, A_HASH6       , 4294967295);  // Hash6
+  set_config(p_config, A_HASH7       , 4294967295);  // Hash7
+  set_config(p_config, A_COUNT       , 100);  // Count
+ 
   // Write into BRAM the config for controller
   i32 parameters[8*N_BUNDLES];
   for (int var = 0; var < N_BUNDLES; var++){
@@ -615,7 +636,7 @@ extern EXT_C void model_setup(Memory_st *restrict mp, void *p_config) {
     parameters[8*var+7] = ((u32*)&bundles[var].header)[1];
   }
   for (int var = 0; var < 8*N_BUNDLES; var++){
-    set_config(p_config, 16+var, parameters[var]);
+    set_config(p_config, 32+var, parameters[var]);
   }
 }
 

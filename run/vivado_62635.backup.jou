@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Tue Dec 10 19:36:50 2024
+# Process ID: 62635
+# Current directory: /home/s.dohadwalla.125/Desktop
+# Command line: vivado
+# Log file: /home/s.dohadwalla.125/Desktop/vivado.log
+# Journal file: /home/s.dohadwalla.125/Desktop/vivado.jou
+# Running On: waiter, OS: Linux, CPU Frequency: 1641.195 MHz, CPU Physical cores: 32, Host memory: 404950 MB
+#-----------------------------------------------------------
+start_gui
+create_project project_1 /home/s.dohadwalla.125/Desktop/project_1 -part xczu7ev-ffvc1156-2-e
+set_property board_part xilinx.com:zcu104:part0:1.1 [current_project]
+add_files -norecurse {/home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/cipher_engine.v /home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/trivium_top.v /home/s.dohadwalla.125/Desktop/cgra4ml/Trivium/hdl/src/shift_reg.v}
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 64
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 64
+wait_on_run synth_1

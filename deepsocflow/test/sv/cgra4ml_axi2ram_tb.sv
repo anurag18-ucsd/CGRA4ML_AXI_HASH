@@ -230,87 +230,87 @@ module cgra4ml_axi2ram_tb #(
     assign m_axi_output_bready_zipcpu  = rand_output_b  & m_axi_output_bready;
 
 
-logic [6:0] hash_count;  //need to count 80 transactions of 32 bits each
-logic [6:0] counter; 
+// logic [6:0] hash_count;  //need to count 80 transactions of 32 bits each
+// logic [6:0] counter; 
 
-logic data_loaded;
-logic [AXIL_WIDTH-1:0] hash_mem_axi [hash_mem_size*8-1:0];  //sending 32 bits at a time, so 8*32=256 bits
+// logic data_loaded;
+// logic [AXIL_WIDTH-1:0] hash_mem_axi [hash_mem_size*8-1:0];  //sending 32 bits at a time, so 8*32=256 bits
 
-//AXI lite slave interface for AXIL-2RAM hash data port 
-logic [AXIL_ADDR_WIDTH-1:0]s_axil_awaddr_1;
-logic [2:0]                s_axil_awprot_1;
-logic                      s_axil_awvalid_1;
-logic                      s_axil_awready_1;
-logic [AXIL_WIDTH-1:0]  s_axil_wdata_1;
-logic [STRB_WIDTH-1:0]     s_axil_wstrb_1;
-logic                      s_axil_wvalid_1;
-logic                      s_axil_wready_1;
-logic [1:0]                s_axil_bresp_1;
-logic                      s_axil_bvalid_1;
-logic                      s_axil_bready_1;
-logic [AXIL_ADDR_WIDTH-1:0] s_axil_araddr_1;
-logic [2:0]                s_axil_arprot_1;
-logic                      s_axil_arvalid_1;
-logic                      s_axil_arready_1;
-logic [AXIL_WIDTH-1:0]  s_axil_rdata_1;
-logic [1:0]                s_axil_rresp_1;
-logic                      s_axil_rvalid_1;
-logic                      s_axil_rready_1;
+// //AXI lite slave interface for AXIL-2RAM hash data port 
+// logic [AXIL_ADDR_WIDTH-1:0]s_axil_awaddr_1;
+// logic [2:0]                s_axil_awprot_1;
+// logic                      s_axil_awvalid_1;
+// logic                      s_axil_awready_1;
+// logic [AXIL_WIDTH-1:0]  s_axil_wdata_1;
+// logic [STRB_WIDTH-1:0]     s_axil_wstrb_1;
+// logic                      s_axil_wvalid_1;
+// logic                      s_axil_wready_1;
+// logic [1:0]                s_axil_bresp_1;
+// logic                      s_axil_bvalid_1;
+// logic                      s_axil_bready_1;
+// logic [AXIL_ADDR_WIDTH-1:0] s_axil_araddr_1;
+// logic [2:0]                s_axil_arprot_1;
+// logic                      s_axil_arvalid_1;
+// logic                      s_axil_arready_1;
+// logic [AXIL_WIDTH-1:0]  s_axil_rdata_1;
+// logic [1:0]                s_axil_rresp_1;
+// logic                      s_axil_rvalid_1;
+// logic                      s_axil_rready_1;
 
-logic [2:0] addr_counter;
-assign hash_count = hash_mem_size*8;
+// logic [2:0] addr_counter;
+// assign hash_count = hash_mem_size*8;
 
-always_ff @(posedge clk) begin
-    if (~rstn) begin
-        counter <= 0;
-        data_loaded <= 1'b0;
-        addr_counter <= 0;
-        s_axil_awaddr_1 <= 0;
-        s_axil_awprot_1 <= 3'b000; // no protection
-        s_axil_awvalid_1 <= 1'b0;
-        s_axil_wdata_1 <= 0;
-        s_axil_wstrb_1 <= 4'b1111; // write all bytes
-        s_axil_wvalid_1 <= 1'b0;
-        s_axil_bready_1 <= 1'b1; //always ready to accept write response
-    end
-    else begin
-        if (counter==hash_count)
-            data_loaded <= 1'b1;
-        else begin
-            //AXI write address channel
-            if (!s_axil_awvalid_1) begin
-                /* verilator lint_off WIDTHEXPAND */
-                s_axil_awaddr_1 <= 0 + addr_counter;
-                /* verilator lint_on WIDTHEXPAND */ // 8 chunks of 32 bits each, counter will reset after 7
-                s_axil_awvalid_1 <= 1'b1;
+// always_ff @(posedge clk) begin
+//     if (~rstn) begin
+//         counter <= 0;
+//         data_loaded <= 1'b0;
+//         addr_counter <= 0;
+//         s_axil_awaddr_1 <= 0;
+//         s_axil_awprot_1 <= 3'b000; // no protection
+//         s_axil_awvalid_1 <= 1'b0;
+//         s_axil_wdata_1 <= 0;
+//         s_axil_wstrb_1 <= 4'b1111; // write all bytes
+//         s_axil_wvalid_1 <= 1'b0;
+//         s_axil_bready_1 <= 1'b1; //always ready to accept write response
+//     end
+//     else begin
+//         if (counter==hash_count)
+//             data_loaded <= 1'b1;
+//         else begin
+//             //AXI write address channel
+//             if (!s_axil_awvalid_1) begin
+//                 /* verilator lint_off WIDTHEXPAND */
+//                 s_axil_awaddr_1 <= 0 + addr_counter;
+//                 /* verilator lint_on WIDTHEXPAND */ // 8 chunks of 32 bits each, counter will reset after 7
+//                 s_axil_awvalid_1 <= 1'b1;
 
-            end
-            else begin
-                if (s_axil_awready_1) 
-                    s_axil_awvalid_1 <= 1'b0;
-                    addr_counter <= addr_counter + 1; //increment address counter
+//             end
+//             else begin
+//                 if (s_axil_awready_1) 
+//                     s_axil_awvalid_1 <= 1'b0;
+//                     addr_counter <= addr_counter + 1; //increment address counter
 
-            end
+//             end
 
-            //AXI write data channel
-            if (!s_axil_wvalid_1) begin
-                s_axil_wdata_1 <= hash_mem_axi[counter];
-                s_axil_wvalid_1 <= 1'b1;
-            end
-            else begin
-                if (s_axil_wready_1) begin
-                    counter <= counter + 1;
-                    s_axil_wvalid_1 <= 1'b0;
-                end
-            end
-            //AXI write response channel
-            if (s_axil_bvalid_1) begin //bready is always high
-                counter <= counter + 1;   //transaction complete, increment counter
-            end
+//             //AXI write data channel
+//             if (!s_axil_wvalid_1) begin
+//                 s_axil_wdata_1 <= hash_mem_axi[counter];
+//                 s_axil_wvalid_1 <= 1'b1;
+//             end
+//             else begin
+//                 if (s_axil_wready_1) begin
+//                     counter <= counter + 1;
+//                     s_axil_wvalid_1 <= 1'b0;
+//                 end
+//             end
+//             //AXI write response channel
+//             if (s_axil_bvalid_1) begin //bready is always high
+//                 counter <= counter + 1;   //transaction complete, increment counter
+//             end
 
-        end
-    end 
-end
+//         end
+//     end 
+// end
 
 zipcpu_axi2ram #(
     .C_S_AXI_ID_WIDTH(C_S_AXI_ID_WIDTH),

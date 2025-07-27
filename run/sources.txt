@@ -32,5 +32,5 @@
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/ext/alex_axis_adapter.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/ext/alex_axis_adapter_any.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/ext/xilinx_sdp.sv
-/home/a.deshpande.186/Desktop/CGRA4ML_AXI_Hash/cgra4ml/run/config_hw.svh
-/home/a.deshpande.186/Desktop/CGRA4ML_AXI_Hash/cgra4ml/run/config_tb.svh
+/home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/config_hw.svh
+/home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/config_tb.svh

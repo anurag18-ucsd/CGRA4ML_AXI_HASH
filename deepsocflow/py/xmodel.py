@@ -4,13 +4,16 @@ from keras.layers import Layer
 from qkeras import *
 import os
 from copy import deepcopy
+import sys
+sys.path.append('../run/hashing')
+import compute_hash
+import sha256 as SHA256
 
 from deepsocflow.py.utils import *
 from deepsocflow.py.xbundle import *
 from deepsocflow.py.xlayers import *
 from deepsocflow.py.hardware import *
 from deepsocflow.py.dataflow import *
-
 
 
 class XInputAct(QActivation):
@@ -294,14 +297,17 @@ def export_inference(model, hw, batch_size=1):
 
         with open(f"{hw.DATA_DIR}/wb.bin", 'wb') as f: 
             f.write(w_bitstring + b_bitstring)
-
+            
+            #generating a .bin file with weights
+        with open(f"{hw.DATA_DIR}/w.txt", 'w') as f:
+            f.write(w_bitstring.hex())
+            
         with open(f"{hw.DATA_DIR}/wbx.bin", 'wb') as f: 
             f.write(w_bitstring + b_bitstring + x_bitstring_0)
 
         with open(f"{hw.DATA_DIR}/x_all.bin", 'wb') as f: 
             f.write(x_bitstring)
-
-
+    
         '''
         Write Text files of vectors
         '''
@@ -329,7 +335,10 @@ def export_inference(model, hw, batch_size=1):
         
         print(f'Weights, inputs, outputs saved to {hw.DATA_DIR}/ib_ip_it_*.txt')
 
-
+#call the hash_compute function to generate hashes for the generated weights
+    compute_hash.compute_hash(hw.DATA_DIR + '/w.txt')
+    
+    
 def verify_inference(model, hw, SIM, SIM_PATH):
 
     '''

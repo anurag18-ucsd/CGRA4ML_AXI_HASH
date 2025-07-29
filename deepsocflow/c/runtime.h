@@ -86,13 +86,13 @@ typedef struct {
 
 #ifdef SIM
   #include <stdio.h>
-  #define sim_fprintf fprintf
+  #define sim_fprintf fprintf 
   #include <stdbool.h>
 
   Memory_st mem_phy;
 	extern EXT_C u32 get_config(void*, u32);
 	extern EXT_C void set_config(void*, u32, u32);
-  extern EXT_C void set_hash(void*, u32, u32);
+  extern EXT_C void set_hash(void*, int, int[8]);
   static inline void flush_cache(void *addr, uint32_t bytes) {} // Do nothing
 
 #else
@@ -107,7 +107,7 @@ typedef struct {
     *(volatile u32 *restrict)(config_base + offset*4) = data;
   }
 
-  inline void set_hash(void *config_base, u32 offset, u32 data){
+  inline void set_hash(void *config_base, int offset, int data[7:0]){
     *(volatile u32 *restrict)(config_base + offset*4) = data;
   }
 #endif
@@ -597,15 +597,19 @@ extern EXT_C void model_setup(Memory_st *restrict mp, void *p_config) {
   debug_printf("DEBUG: Reading from file %s \n", f_path);
   if(!fp) debug_printf("ERROR! File not found: %s \n", f_path);
   int bytes = fread(mp->w, 1, WB_BYTES+X_BYTES, fp);
+  // for(int i=0; i<50; i++){
+  //   if (i%8 == 0) debug_printf("\n");
+  //   debug_printf("%02x ",(unsigned char)mp->w[i]);
+  // }
   fclose(fp);
 #endif
   flush_cache(mp->w, WB_BYTES+X_BYTES);  // force transfer to DDR, starting addr & length
 
   FILE *file;
-  int hash_data [80]; // 10 bundles, 8 hash registers each
-  file = fopen("/home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/hashing/model_hash_output.bin",)
+  int hash_data [10][8]; // 10 bundles, 8 hash registers each
+  file = fopen("/home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/model_hash_output.bin", "rb");
   if (!file) {
-    debug_printf("ERROR! File not found: /home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/hashing/model_hash_output.bin \n");
+    debug_printf("ERROR! File not found: /home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/model_hash_output.bin \n");
     return;
   }
   size_t readfile = fread(hash_data, sizeof(int), 80, file);
@@ -630,10 +634,16 @@ extern EXT_C void model_setup(Memory_st *restrict mp, void *p_config) {
   set_config(p_config, A_X_DONE      , 0);  // Bundle done
   set_config(p_config, A_O_DONE      , 0);  // Output done
 
-  for (int i=0; i<80; i++) {
-    set_hash(p_config, j, hash_data[i][j]); // Clear hash registers
+  for (int i=0; i<10; i++) {
+    set_hash(p_config, i, hash_data[i]); // Clear hash registers
   } 
-
+  
+  for (int i=0; i<8; i++) {
+    for(int j=0; j<8; j++) {
+      debug_printf("hash_data[%d][%d]: %04x", i, j, hash_data[i][j]);
+    }
+    debug_printf("\n");
+  }
   // Write into BRAM the config for controller
   i32 parameters[8*N_BUNDLES];
   for (int var = 0; var < N_BUNDLES; var++){

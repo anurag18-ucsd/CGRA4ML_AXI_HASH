@@ -237,25 +237,25 @@ module cgra4ml_axi2ram_tb #(
 // logic [AXIL_WIDTH-1:0] hash_mem_axi [hash_mem_size*8-1:0];  //sending 32 bits at a time, so 8*32=256 bits
 
 // //AXI lite slave interface for AXIL-2RAM hash data port 
-// logic [AXIL_ADDR_WIDTH-1:0]s_axil_awaddr_1;
-// logic [2:0]                s_axil_awprot_1;
-// logic                      s_axil_awvalid_1;
-// logic                      s_axil_awready_1;
-// logic [AXIL_WIDTH-1:0]  s_axil_wdata_1;
-// logic [STRB_WIDTH-1:0]     s_axil_wstrb_1;
-// logic                      s_axil_wvalid_1;
-// logic                      s_axil_wready_1;
-// logic [1:0]                s_axil_bresp_1;
-// logic                      s_axil_bvalid_1;
-// logic                      s_axil_bready_1;
-// logic [AXIL_ADDR_WIDTH-1:0] s_axil_araddr_1;
-// logic [2:0]                s_axil_arprot_1;
-// logic                      s_axil_arvalid_1;
-// logic                      s_axil_arready_1;
-// logic [AXIL_WIDTH-1:0]  s_axil_rdata_1;
-// logic [1:0]                s_axil_rresp_1;
-// logic                      s_axil_rvalid_1;
-// logic                      s_axil_rready_1;
+logic [AXIL_ADDR_WIDTH-1:0]s_axil_awaddr_1;
+logic [2:0]                s_axil_awprot_1;
+logic                      s_axil_awvalid_1;
+logic                      s_axil_awready_1;
+logic [AXIL_WIDTH-1:0]  s_axil_wdata_1;
+logic [STRB_WIDTH-1:0]     s_axil_wstrb_1;
+logic                      s_axil_wvalid_1;
+logic                      s_axil_wready_1;
+logic [1:0]                s_axil_bresp_1;
+logic                      s_axil_bvalid_1;
+logic                      s_axil_bready_1;
+logic [AXIL_ADDR_WIDTH-1:0] s_axil_araddr_1;
+logic [2:0]                s_axil_arprot_1;
+logic                      s_axil_arvalid_1;
+logic                      s_axil_arready_1;
+logic [AXIL_WIDTH-1:0]  s_axil_rdata_1;
+logic [1:0]                s_axil_rresp_1;
+logic                      s_axil_rvalid_1;
+logic                      s_axil_rready_1;
 
 // logic [2:0] addr_counter;
 // assign hash_count = hash_mem_size*8;

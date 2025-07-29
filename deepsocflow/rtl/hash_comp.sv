@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 `include "defines.svh"
 module hash_comp #(
-    parameter HASH_MEM_SIZE = 64,
+    parameter HASH_MEM_SIZE = 10,
     parameter AXI_WIDTH = `AXI_WIDTH,
     parameter AXI_ID_WIDTH = 6,
     parameter AXIL_WIDTH = 32,
@@ -63,10 +63,10 @@ reg  [255:0] comp_hash;
 reg hash_done;
 reg next_flag;
 reg hash_valid_d;
-reg [255:0] [HASH_MEM_SIZE-1:0] hash_mem; //64 256-bit hashes
+reg [255:0] hash_mem [HASH_MEM_SIZE-1:0];//64 256-bit hashes
 reg [AXIL_WIDTH-1:0] hash_mem_axi [7:0];   //8 chunks of 32 bits each, total 256 bits
 //reg [$clog2(hash_mem_size)-1:0] hash_mem_addr;
-reg [$clog2(hash_mem_size)-1:0] hash_mem_rd_addr;
+reg [$clog2(HASH_MEM_SIZE)-1:0] hash_mem_rd_addr;
 // reg [2:0] in_hash_counter;
 // reg hash_mem_flag;
 // reg [3:0] hash_mem_counter;

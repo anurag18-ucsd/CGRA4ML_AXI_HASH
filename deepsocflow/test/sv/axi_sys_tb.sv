@@ -56,6 +56,7 @@ module axi_sys_tb;
   
   export "DPI-C" function get_config;
   export "DPI-C" function set_config;
+  export "DPI-C" function set_hash;
   import "DPI-C" context function byte get_byte_a32 (int unsigned addr);
   import "DPI-C" context function void set_byte_a32 (int unsigned addr, byte data);
   import "DPI-C" context function chandle get_mp ();
@@ -75,10 +76,12 @@ module axi_sys_tb;
     else             dut.wrapper.OC_TOP.CONTROLLER.sdp_ram.RAM[offset-32] <= data;
   endfunction
 
-  function automatic void set_hash(chandle config_base, input int offset, input int data);
-    dut.wrapper.OC_TOP.hash_comp_weights_inst.hash_mem[offset] <= data;
+  function automatic void set_hash(chandle config_base, input int offset, input int data [7:0]);
+    for(int i = 0; i < 8; i++) begin
+      dut.wrapper.hash_comp_weights_inst.hash_mem[offset][((8-i)*32 - 1 ) -: 32] = data[i];
+    end
   endfunction
-
+  
   always_ff @(posedge clk) begin : Axi_rw
     if (o_rd_pixel) 
       for (int i = 0; i < C_S_AXI_DATA_WIDTH/8; i++) 
@@ -87,7 +90,7 @@ module axi_sys_tb;
     if (o_rd_weights) 
       for (int i = 0; i < C_S_AXI_DATA_WIDTH/8; i++)
         i_rdata_weights[i*8 +: 8] <= get_byte_a32((32'(o_raddr_weights) << LSB) + i);
-
+      
     if (o_we_output) 
       for (int i = 0; i < C_S_AXI_DATA_WIDTH/8; i++) 
         if (o_wstrb_output[i]) 

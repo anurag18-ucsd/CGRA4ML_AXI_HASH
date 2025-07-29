@@ -297,11 +297,21 @@ def export_inference(model, hw, batch_size=1):
 
         with open(f"{hw.DATA_DIR}/wb.bin", 'wb') as f: 
             f.write(w_bitstring + b_bitstring)
-            
-            #generating a .bin file with weights
-        with open(f"{hw.DATA_DIR}/w.txt", 'w') as f:
-            f.write(w_bitstring.hex())
-            
+        
+        arr = []
+        combined = w_bitstring + b_bitstring + x_bitstring_0
+        # Write the weights in a text file
+        with open(f"{hw.DATA_DIR}/wbx.txt", 'w') as f:
+            for i in range(0, len(combined), 8):
+                chunk = combined[i:i+8]  # Get 8 bytes
+                for b in reversed(chunk):
+                    f.write(f"{b:02x}")
+                f.write('\n')
+                        
+        # Write the weights in another text file to check the string
+        with open(f"{hw.DATA_DIR}/wbx_hex.txt", 'w') as f:
+            f.write(combined.hex())
+                
         with open(f"{hw.DATA_DIR}/wbx.bin", 'wb') as f: 
             f.write(w_bitstring + b_bitstring + x_bitstring_0)
 
@@ -336,7 +346,7 @@ def export_inference(model, hw, batch_size=1):
         print(f'Weights, inputs, outputs saved to {hw.DATA_DIR}/ib_ip_it_*.txt')
 
 #call the hash_compute function to generate hashes for the generated weights
-    compute_hash.compute_hash(hw.DATA_DIR + '/w.txt')
+    compute_hash.compute_hash()
     
     
 def verify_inference(model, hw, SIM, SIM_PATH):

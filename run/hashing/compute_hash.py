@@ -30,9 +30,9 @@ def read_and_split_hex64(file_path):
     return hex_array
 
 # File path to the text file containing 64-bit hexadecimal values
-file_path = "output_hashing.txt"  #default file path
+file_path = "/home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/vectors/wbx.txt"  #default file path
 
-def compute_hash(file_path = file_path):
+def compute_hash():
     # Read the file and process the data
     hex_array = read_and_split_hex64(file_path)
     print("Split 32-bit Hexadecimal Array:", len(hex_array))
@@ -41,16 +41,20 @@ def compute_hash(file_path = file_path):
     my_sha256.init()
     file1= open("model_hash_input.txt", "w")
     file2= open("model_hash_output.bin", "wb")
+    file3 = open("model_hash_output.txt", "w")
 
     for i in range(int(len(hex_array)/16)):
+        print(f"Chunk {i}: {hex_array[i*16:i*16+16]}")
         chunk = hex_array[i*16:i*16+16]
         chunk.reverse()
         concatenated_hex = (''.join(f"{value:08X}" for value in chunk)).lower()
         file1.write(concatenated_hex + "\n")
         my_sha256.next(chunk)
         my_digest = my_sha256.get_digest()
-        #concatenated_hex_hash = (''.join(f"{value:08X}" for value in my_digest)).lower()
-        file2.write(b''.join(struct.pack(">I", value) for value in my_digest))
+        file2.write(b''.join(struct.pack("<I", value) for value in my_digest))
+        concatenated_hex_hash = (''.join(f"{value:08X}" for value in my_digest)).lower()
+        file3.write(concatenated_hex_hash + "\n")
     my_digest = my_sha256.get_digest()
     print(my_digest)
     
+compute_hash()

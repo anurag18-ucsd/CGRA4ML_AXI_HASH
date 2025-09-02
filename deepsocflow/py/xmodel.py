@@ -298,7 +298,6 @@ def export_inference(model, hw, batch_size=1):
         with open(f"{hw.DATA_DIR}/wb.bin", 'wb') as f: 
             f.write(w_bitstring + b_bitstring)
         
-        arr = []
         combined = w_bitstring + b_bitstring + x_bitstring_0
         # Write the weights in a text file
         with open(f"{hw.DATA_DIR}/wbx.txt", 'w') as f:

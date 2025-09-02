@@ -606,7 +606,7 @@ extern EXT_C void model_setup(Memory_st *restrict mp, void *p_config) {
   flush_cache(mp->w, WB_BYTES+X_BYTES);  // force transfer to DDR, starting addr & length
 
   FILE *file;
-  int hash_data [10][8]; // 10 bundles, 8 hash registers each
+  int hash_data [10][8]; // 10 (can be parameterized) bundles, 8 hash registers each
   file = fopen("/home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/model_hash_output.bin", "rb");
   if (!file) {
     debug_printf("ERROR! File not found: /home/a.deshpande.186/Desktop/CGRA4ML_AXI_HASH/run/model_hash_output.bin \n");
@@ -635,7 +635,7 @@ extern EXT_C void model_setup(Memory_st *restrict mp, void *p_config) {
   set_config(p_config, A_O_DONE      , 0);  // Output done
 
   for (int i=0; i<10; i++) {
-    set_hash(p_config, i, hash_data[i]); // Clear hash registers
+    set_hash(p_config, i, hash_data[i]); // writing hash_data array to hash_mem 
   } 
   
   for (int i=0; i<8; i++) {

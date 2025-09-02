@@ -32,7 +32,12 @@ module sec_wrapper #(
     // axilite interface for configuration
     input  wire                   clk,
     input  wire                   rstn,
-
+    
+    // ports for the encrypt_decrypt module
+    input [31:0]  ld_dat_i,   /* Key and IV data */
+    input [2:0]   ld_reg_a_i, /* Load value into reg_a */
+    input [2:0]   ld_reg_b_i, /* Load value into reg_b */
+    input init_i,    /* Initialize the cipher */
     /*
      * AXI-Lite slave interface
      */
@@ -87,7 +92,7 @@ module sec_wrapper #(
     output wire                       m_axi_weights_arvalid,
     input  wire                       m_axi_weights_arready,
     input  wire [AXI_ID_WIDTH-1:0]    m_axi_weights_rid,
-    input  wire [AXI_WIDTH   -1:0]  m_axi_weights_rdata,
+    input  wire [AXI_WIDTH   -1:0]    m_axi_weights_rdata,
     input  wire [1:0]                 m_axi_weights_rresp,
     input  wire                       m_axi_weights_rlast,
     input  wire                       m_axi_weights_rvalid,
@@ -153,6 +158,13 @@ wire reg_rd_ack;
 wire hash_error;
 wire hash_verified;
 localparam TIMEOUT = 2;
+
+//signals from encrypt_decrypt module to cgra4ml
+logic weights_rvalid;
+logic [AXI_WIDTH-1:0] weights_rdata;
+logic weights_rlast;
+logic weights_rready;
+
 // AXIL-2RAM interface for input hashes 
 alex_axilite_ram #(
     .DATA_WR_WIDTH(AXIL_WIDTH),
@@ -195,6 +207,8 @@ alex_axilite_ram #(
     .reg_rd_ack(reg_rd_ack)
 );
 
+
+
 hash_comp hash_comp_weights_inst (
     .clk(clk),
     .rstn(rstn),
@@ -208,6 +222,25 @@ hash_comp hash_comp_weights_inst (
     .reg_wr_en(reg_wr_en),
     .reg_wr_addr(reg_wr_addr),
     .reg_wr_ack(reg_wr_ack)
+);
+
+encrypt_decrypt #(
+    .AXI_WIDTH(AXI_WIDTH)
+) encrypt_decrypt_inst (
+    .clk(clk),
+    .rstn(rstn),
+    .m_axi_weights_rdata(m_axi_weights_rdata),
+    .weights_rready(weights_rready),
+    .m_axi_weights_rvalid(m_axi_weights_rvalid),
+    .m_axi_weights_rlast(m_axi_weights_rlast),
+    .ld_data_i(ld_dat_i), 
+    .ld_reg_a_i(ld_reg_a_i), 
+    .ld_reg_b_i(ld_reg_b_i), 
+    .init_i(init_i), 
+    .m_axi_weights_rready(m_axi_weights_rready),
+    .weights_rvalid(weights_rvalid),
+    .weights_rdata(weights_rdata),
+    .weights_rlast(weights_rlast)
 );
 
 axi_cgra4ml #(     //same parameters will be passed from the TB to the wrapper to the OC_TOP
@@ -231,6 +264,11 @@ axi_cgra4ml #(     //same parameters will be passed from the TB to the wrapper t
     .STRB_WIDTH(STRB_WIDTH),
     .W_BPT(W_BPT)
  )
-OC_TOP (.*);
+OC_TOP (
+        .m_axi_weights_rready(weights_rready),
+        .*
+        );
+
+
 
 endmodule

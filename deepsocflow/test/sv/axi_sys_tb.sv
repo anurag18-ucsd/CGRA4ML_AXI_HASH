@@ -48,6 +48,15 @@ module axi_sys_tb;
   logic [C_S_AXI_DATA_WIDTH/8  -1:0] o_wstrb_output;
   integer file_handle, file_handle1, file_handle2,file_handle3;
   logic [255:0] hash_mem[0:hash_mem_size-1];
+  
+  logic [79:0] key_r;
+  logic [79:0] iv_r;
+  logic [31:0]  ld_dat_i;   /* Key and IV data */
+  logic [2:0]   ld_reg_a_i; /* Load value into reg_a */
+  logic [2:0]   ld_reg_b_i; /* Load value into reg_b */
+  logic init_i;     /* Initialize the cipher */
+  integer i;
+
   //logic [DATA_WR_WIDTH] hash_mem_axi[0:hash_mem_size*8-1]; technically not needed
   cgra4ml_axi2ram_tb dut(.*);
 
@@ -146,8 +155,35 @@ module axi_sys_tb;
     rstn = 0;
     repeat(2) @(posedge clk) #10ps;
     rstn = 1;
+
+    key_r[79:0] = 80'h9d6c6233992d4abe18f9;
+    iv_r[79:0] =  80'h49d7599b2583a842cea1;
+    ld_reg_a_i = 0;
+    #(`CLK_PERIOD)
+    for (i=0;i<3;i++)
+    begin
+        ld_reg_a_i[i] = 1'b1;
+        ld_dat_i = key_r[(i*32)+:32];
+        #(`CLK_PERIOD)
+        ld_reg_a_i[i] = 1'b0;
+    end
+
+    ld_reg_b_i = 0;
+    for (i=0;i<3;i++)
+    begin
+        ld_reg_b_i[i] = 1'b1;
+        ld_dat_i = iv_r[(i*32)+:32];
+        #(`CLK_PERIOD)
+        ld_reg_b_i[i] = 1'b0;
+    end
+    init_i = 1'b1;
+    #(`CLK_PERIOD);
+    init_i = 1'b0;
+
+    // Let the cipher initialize warmup and phase states
+    repeat(1185) #(`CLK_PERIOD);
+
     mpv = get_mp();
-    
     model_setup(mpv, cp);
     repeat(2) @(posedge clk) #10ps;
 

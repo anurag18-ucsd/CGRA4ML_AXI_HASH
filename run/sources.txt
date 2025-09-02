@@ -4,12 +4,15 @@
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/test/sv/ext/skidbuffer.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/test/sv/ext/zipcpu_axi2ram.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/axi_cgra4ml.v
+/home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/cipher_engine.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/dnn_engine.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/fifo.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/sha256.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/sha256_core.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/sha256_k_constants.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/sha256_w_mem.v
+/home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/shift_reg.v
+/home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/trivium_top.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/ext/alex_axis_pipeline_register.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/ext/alex_axis_register.v
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/ext/xilinx_spwf.v
@@ -19,6 +22,7 @@
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/counter.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/cyclic_bram.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/dma_controller.sv
+/home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/encrypt_decrypt.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/hash_comp.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/n_delay.sv
 /home/a.deshpande.186/.local/lib/python3.10/site-packages/deepsocflow/rtl/proc_engine.sv

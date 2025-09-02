@@ -86,6 +86,11 @@ module cgra4ml_axi2ram_tb #(
     input  wire                   clk,
     input  wire                   rstn,
 
+
+    input [31:0]  ld_dat_i,   /* Key and IV data */
+    input [2:0]   ld_reg_a_i, /* Load value into reg_a */
+    input [2:0]   ld_reg_b_i, /* Load value into reg_b */
+    input init_i,    /* Initialize the cipher */
     /*
      * AXI-Lite slave interface
      */
